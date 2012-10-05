@@ -1,6 +1,6 @@
 /*
- * Izilla touchMenuHover jQuery plugin v1.0
- * Allows uls that open on li:hover to open on tap/click on mobile platforms such as Android, WP7 etc
+ * Izilla touchMenuHover jQuery plugin v1.1
+ * Allows ULs (or any element of your choice) that open on li:hover to open on tap/click on mobile platforms such as iOS, Android, WP7 etc
  *
  * Copyright (c) 2012 Izilla Partners Pty Ltd
  *
@@ -9,30 +9,46 @@
  * Licensed under the MIT license
  *
  */
- 
-(function($) {
-	$.fn.touchMenuHover = function() {
+;(function($) {
+	$.fn.touchMenuHover = function(options) {
+		var settings = $.extend({
+			'childTag': 'ul',
+			'closeElement': ''
+		}, options);
 		
-		var $a = this.find('a');
-		var devices = /\b3ds|android|bada|hpwos|iemobile|kindle fire|opera mini|opera mobi|playbook|silk\b/gi;
+		var $a = this.find('a'),
+			devices = '3ds|android|bada|hpwos|iemobile|kindle fire|opera mini|opera mobi|playbook|silk',
+			ios = '|ipad|ipod|iphone',
+			devicesRX,
+			openClass = 'touch-open',
+			closeStr = 'html';
 		
-		if ($a.length > 0 && devices.test(navigator.userAgent)) {
-			var o = 'touch-open';
+		if (settings['childTag'].toString().toLowerCase() != 'ul')
+			devices += ios;
+		
+		devices = '\b' + devices + '\b';
+		devicesRX = new RegExp(devices, 'gi');
+		
+		if ($a.length > 0 && devicesRX.test(navigator.userAgent)) {
 			$a.each(function(e) {
-				$(this).on('click', function(e) {
+				$(this).click(function(e) {
 					e.stopPropagation();
-					$(this).parent('li').siblings().find('a').removeClass(o);
+					$(this).parent('li').siblings().find('a').removeClass(openClass);
 					
-					if (!$(this).hasClass(o) && $(this).next('ul').length > 0) {
+					if (!$(this).hasClass(openClass) && $(this).next(settings['childTag']).length > 0) {
 						e.preventDefault();
-						$(this).addClass(o);
+						$(this).addClass(openClass);
 					}
 				});
 			});
-			$('html').on('click', function() {
-				$a.removeClass(o);
+			
+			if (settings['closeElement'].length > 1)
+				closeStr += ',' + settings['closeElement'];
+				
+			$(closeStr).click(function() {
+				$a.removeClass(openClass);
 			});
 		}
-		
+		return this;
 	};
 })(jQuery);
