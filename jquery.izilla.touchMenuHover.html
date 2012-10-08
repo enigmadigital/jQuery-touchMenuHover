@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width; initial-scale=1" />
+	<title>Izilla jQuery Touch Menu Hover Test Page</title>
+	<style>
+		body {
+			font-family: sans-serif;
+		}
+		
+		h1 {
+			font-size: 1.438em;
+			margin-top: 0;
+		}
+		
+		h2 {
+			color: #333;
+			font-size: 1.188em;
+			font-weight: bold;
+			margin: 0.842em 0;
+		}
+		
+		h2 i {
+			color: #666;
+		}
+		
+		.nav {
+			border-bottom: 1px solid #999;
+			max-width: 768px;
+			padding-bottom: 1.5em;
+			position: relative;
+			z-index: 4;
+		}
+		
+		.nav:nth-of-type(2) {
+			z-index: 3;
+		}
+		
+		.nav:nth-of-type(3) {
+			z-index: 2;
+		}
+		
+		.nav:nth-of-type(4) {
+			z-index: 1;
+		}
+		
+		.nav:last-of-type {
+			border: 0;
+			min-height: 11.25em;
+			padding: 0;
+		}
+		
+		ul, ul div {
+			border: solid #00794a;
+			border-width: 2px 0;
+			display: table;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			width: 100%;
+		}
+		
+		li {
+			display: table-cell;
+			position: relative;
+		}
+		
+		a {
+			background: #008752;
+			border-right: 2px solid #00794a;
+			color: #fff;
+			display: block;
+			padding: .375em;
+			text-decoration: none;
+		}
+		
+		li:first-child > a {
+			border-left: 2px solid #00794a;
+		}
+		
+		.parent:after {
+			border-color: #fff transparent transparent transparent;
+			border-style: solid;
+			border-width: 5px 5px 0 5px;
+			content: '';
+			display: inline-block;
+			height: 0;
+			margin-left: .5em;
+			position: relative;
+			top: -.063em;
+			-webkit-transform: rotate(360deg);
+			width: 0;
+		}
+		
+		a:hover, a:focus, li:hover > a {
+			background: #1a9364;
+		}
+		
+		ul ul, ul div {
+			border-width: 0 2px;
+			left: -999em;
+			margin-left: -2px;
+			max-width: 14.7em;
+			position: absolute;
+		}
+		
+		ul div ul {
+			border: 0;
+			margin: 0;
+			max-width: none;
+			position: static;
+		}
+		
+		ul li:hover ul, ul li:hover div {
+			left: auto;
+		}
+		
+		ul li:first-child ul, ul li:first-child div {
+			margin-left: 0;
+		}
+		
+		li li {
+			display: block;
+		}
+		
+		li li a {
+			background: #1a9364;
+			border: solid #00794a;
+			border-width: 0 0 2px 0;
+		}
+		
+		li li:first-child > a {
+			border-top-width: 2px;
+			border-left: 0;
+		}
+		
+		li li a:hover, li li a:focus {
+			background: #008752;
+		}
+	</style>
+</head>
+
+<body>
+
+<h1>Izilla jQuery Touch Menu Hover Test Page</h1>
+
+<h2>Standard UL &raquo; LI &raquo; UL &raquo; LI pattern</h2>
+<p>Flyout menus not accessible on any mobile browsers <i>(not always the case on iOS)</i></p>
+
+<div class="nav">
+	<ul>
+		<li>
+			<a href="http://google.com" class="parent">Google</a>
+			<ul>
+				<li><a href="http://drive.google.com">Drive</a></li>
+				<li><a href="http://mail.google.com">Gmail</a></li>
+				<li><a href="http://www.google.com/imghp">Images</a></li>
+				<li><a href="http://maps.google.com">Maps</a></li>
+				<li><a href="http://youtube.com">YouTube</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="http://bbc.com" class="parent">BBC</a>
+			<ul>
+				<li><a href="http://bbc.com/news/">News</a></li>
+				<li><a href="http://bbc.com/sport/">Sport</a></li>
+				<li><a href="http://bbc.com/weather">Weather</a></li>
+			</ul>
+		</li>
+		<li><a href="https://github.com/izilla">GitHub</a></li>
+		<li><a href="https://twitter.com/IzillaWeb">Twitter</a></li>
+	</ul>
+</div>
+
+<h2>Standard UL &raquo; LI &raquo; UL &raquo; LI pattern <i>(with Touch Menu Hover enabled)</i></h2>
+<p>Flyout menus accessible on all mobile browsers</p>
+
+<pre>
+<code>
+$('#tmh1').touchMenuHover({
+	'forceiOS': true
+});
+</code>
+</pre>
+
+<div class="nav" id="tmh1">
+	<ul>
+		<li>
+			<a href="http://google.com" class="parent">Google</a>
+			<ul>
+				<li><a href="http://drive.google.com">Drive</a></li>
+				<li><a href="http://mail.google.com">Gmail</a></li>
+				<li><a href="http://www.google.com/imghp">Images</a></li>
+				<li><a href="http://maps.google.com">Maps</a></li>
+				<li><a href="http://youtube.com">YouTube</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="http://bbc.com" class="parent">BBC</a>
+			<ul>
+				<li><a href="http://bbc.com/news/">News</a></li>
+				<li><a href="http://bbc.com/sport/">Sport</a></li>
+				<li><a href="http://bbc.com/weather">Weather</a></li>
+			</ul>
+		</li>
+		<li><a href="https://github.com/izilla">GitHub</a></li>
+		<li><a href="https://twitter.com/IzillaWeb">Twitter</a></li>
+	</ul>
+</div>
+
+<h2>Mega Menu UL &raquo; LI &raquo; DIV &raquo; UL &raquo; LI pattern</h2>
+<p>Flyout menus not accessible on any mobile browsers</p>
+
+<div class="nav">
+	<ul>
+		<li>
+			<a href="http://google.com" class="parent">Google</a>
+			<div>
+				<ul>
+					<li><a href="http://drive.google.com">Drive</a></li>
+					<li><a href="http://mail.google.com">Gmail</a></li>
+					<li><a href="http://www.google.com/imghp">Images</a></li>
+					<li><a href="http://maps.google.com">Maps</a></li>
+					<li><a href="http://youtube.com">YouTube</a></li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<a href="http://bbc.com" class="parent">BBC</a>
+			<div>
+				<ul>
+					<li><a href="http://bbc.com/news/">News</a></li>
+					<li><a href="http://bbc.com/sport/">Sport</a></li>
+					<li><a href="http://bbc.com/weather">Weather</a></li>
+				</ul>
+			</div>
+		</li>
+		<li><a href="https://github.com/izilla">GitHub</a></li>
+		<li><a href="https://twitter.com/IzillaWeb">Twitter</a></li>
+	</ul>
+</div>
+
+<h2>Mega Menu UL &raquo; LI &raquo; DIV &raquo; UL &raquo; LI pattern <i>(with Touch Menu Hover enabled)</i></h2>
+<p>Flyout menus accessible on all mobile browsers</p>
+
+<pre>
+<code>
+$('#tmh2').touchMenuHover({
+	'childTag': 'div'
+});
+</code>
+</pre>
+
+<div class="nav" id="tmh2">
+	<ul>
+		<li>
+			<a href="http://google.com" class="parent">Google</a>
+			<div>
+				<ul>
+					<li><a href="http://drive.google.com">Drive</a></li>
+					<li><a href="http://mail.google.com">Gmail</a></li>
+					<li><a href="http://www.google.com/imghp">Images</a></li>
+					<li><a href="http://maps.google.com">Maps</a></li>
+					<li><a href="http://youtube.com">YouTube</a></li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<a href="http://bbc.com" class="parent">BBC</a>
+			<div>
+				<ul>
+					<li><a href="http://bbc.com/news/">News</a></li>
+					<li><a href="http://bbc.com/sport/">Sport</a></li>
+					<li><a href="http://bbc.com/weather">Weather</a></li>
+				</ul>
+			</div>
+		</li>
+		<li><a href="https://github.com/izilla">GitHub</a></li>
+		<li><a href="https://twitter.com/IzillaWeb">Twitter</a></li>
+	</ul>
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>
+/*
+ * Izilla touchMenuHover jQuery plugin v1.2
+ * Allows ULs (or any element of your choice) that open on li:hover to open on tap/click on mobile platforms such as iOS, Android, WP7 etc
+ *
+ * Copyright (c) 2012 Izilla Partners Pty Ltd
+ *
+ * http://www.izilla.com.au
+ *
+ * Licensed under the MIT license
+ *
+ */
+;(function($){$.fn.touchMenuHover=function(d){var f=$.extend({childTag:"ul",closeElement:"",forceiOS:false},d);var h=this.find("a"),c="3ds|android|bada|hpwos|iemobile|kindle fire|opera mini|opera mobi|playbook|silk",e="|ipad|ipod|iphone",i,g="touch-open",b="html";if(f.childTag.toString().toLowerCase()!="ul"||f.forceiOS){c+=e}i=new RegExp(c,"gi");if(h.length>0&&i.test(navigator.userAgent)){h.each(function(){var j=$(this).parent("li").siblings().find("a");$(this).click(function(k){k.stopPropagation();j.removeClass(g);if(!$(this).hasClass(g)&&$(this).next(f.childTag).length>0){k.preventDefault();$(this).addClass(g)}})});if(f.closeElement.length>1){b+=","+f.closeElement}$(b).click(function(){h.removeClass(g)})}return this}})(jQuery);
+
+$(document).ready(function() {
+	$('#tmh1').touchMenuHover({
+		'forceiOS': true
+	});
+	$('#tmh2').touchMenuHover({
+    	'childTag': 'div'
+	});	
+});
+</script>
+</body>
+</html>

@@ -39,3 +39,7 @@ $('parent-ul-selector').touchMenuHover({
 	'closeElement': '#nav'
 });
 ```
+
+---
+
+Demo: http://www.izilla.com.au/git/jquery.izilla.touchMenuHover.html
