@@ -1,13 +1,12 @@
 /*
- * Izilla touchMenuHover jQuery plugin v1.2
+ * Izilla touchMenuHover jQuery plugin v1.3
  * Allows ULs (or any element of your choice) that open on li:hover to open on tap/click on mobile platforms such as iOS, Android, WP7 etc
  *
- * Copyright (c) 2012 Izilla Partners Pty Ltd
+ * Copyright (c) 2013 Izilla Partners Pty Ltd
  *
- * http://www.izilla.com.au
+ * http://izilla.com.au
  *
  * Licensed under the MIT license
- *
  */
 ;(function($) {
 	$.fn.touchMenuHover = function(options) {
@@ -17,7 +16,7 @@
 			'forceiOS': false
 		}, options);
 		
-		var $a = this.find('a'),
+		var $a = $(this).find('a'),
 			devices = '3ds|android|bada|hpwos|iemobile|kindle fire|opera mini|opera mobi|playbook|silk',
 			ios = '|ipad|ipod|iphone',
 			devicesRX,
@@ -31,14 +30,16 @@
 		
 		if ($a.length > 0 && devicesRX.test(navigator.userAgent)) {
 			$a.each(function() {
-				var $siblings = $(this).parent('li').siblings().find('a');
-				$(this).click(function(e) {
+				var $this = $(this),
+					$siblings = $this.parent('li').siblings().find('a');
+				$this.click(function(e) {
+					var $this = $(this);
 					e.stopPropagation();
 					$siblings.removeClass(openClass);
 					
-					if (!$(this).hasClass(openClass) && $(this).next(settings['childTag']).length > 0) {
+					if (!$this.hasClass(openClass) && $this.next(settings['childTag']).length > 0) {
 						e.preventDefault();
-						$(this).addClass(openClass);
+						$this.addClass(openClass);
 					}
 				});
 			});
