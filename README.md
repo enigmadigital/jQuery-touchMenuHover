@@ -3,7 +3,7 @@ Izilla jQuery Touch Menu Hover
 
 ###  Allows ULs (or any element of your choice) that open on li:hover to open on tap/click on mobile platforms such as iOS, Android, WP7, WP8, BlackBerry, Bada, WebOS, 3DS & WiiU
 
-WebKit browsers on iOS are the only major mobile browsers that (sometimes?) open child ULs when tapped; every other platform just follows the link. With this plugin, the click event is intercepted allowing the menu to be opened. Tapping the link again will follow it. Depending on the styles applied, tapping anywhere else on the document will try to close the menu.
+WebKit browsers on iOS are the only major mobile browsers that (sometimes?) open child ULs when tapped; every other platform just follows the link. With this plugin, the click event is intercepted allowing the menu to be opened. Tapping the link again will follow it. Tapping anywhere else on the document will try to close the menu.
 
 Additionally, no mobile browsers natively handle nested lists where the child ULs are wrapped in another element such as a DIV (for "mega menus"), so this plugin handles that, too.
 
@@ -11,7 +11,7 @@ The plugin has 4 default options which can be overwritten as required:
 
 ```
 childTag: 'ul'   // Sets which element contains the child lists. Defaults to UL. If not UL, forceiOS is set to true, regardless
-closeElement: '' // An additional selector that will close any open list when clicked/tapped. Doesn't work on iOS when childTag is set to UL
+closeElement: '' // An additional selector that will close any open list when clicked/tapped
 forceiOS: false  // iOS sometimes handles these menus fine so let it try
 openClass: 'tmh-open' // The class added to parent links when selected
 ```
