@@ -25,6 +25,14 @@
 			color: #666;
 		}
 		
+		b {
+			color: #1a9364;
+		}
+		
+		b.fail {
+			color: #a81c1c;
+		}
+		
 		.nav {
 			border-bottom: 1px solid #999;
 			max-width: 768px;
@@ -61,6 +69,10 @@
 			width: 100%;
 		}
 		
+		.fail ul, .fail ul div {
+			border-color: #7e1515;
+		}
+		
 		li {
 			display: table-cell;
 			position: relative;
@@ -75,8 +87,17 @@
 			text-decoration: none;
 		}
 		
+		.fail a {
+			background: #891717;
+			border-right-color: #7e1515;
+		}
+		
 		li:first-child > a {
 			border-left: 2px solid #00794a;
+		}
+		
+		.fail li:first-child > a {
+			border-left-color: #7e1515;
 		}
 		
 		.parent:after {
@@ -95,6 +116,10 @@
 		
 		a:hover, a:focus, li:hover > a {
 			background: #1a9364;
+		}
+		
+		.fail a:hover, .fail a:focus, .fail li:hover > a {
+			background: #891717;
 		}
 		
 		ul ul, ul div {
@@ -130,6 +155,11 @@
 			border-width: 0 0 2px 0;
 		}
 		
+		.fail li li a {
+			background: #a81c1c;
+			border-color: #7e1515;
+		}
+		
 		li li:first-child > a {
 			border-top-width: 2px;
 			border-left: 0;
@@ -137,6 +167,10 @@
 		
 		li li a:hover, li li a:focus {
 			background: #008752;
+		}
+		
+		.fail li li a:hover, .fail li li a:focus {
+			background: #891717;
 		}
 	</style>
 </head>
@@ -146,9 +180,9 @@
 <h1>Izilla jQuery Touch Menu Hover Test Page</h1>
 
 <h2>Standard UL &raquo; LI &raquo; UL &raquo; LI pattern</h2>
-<p>Flyout menus not accessible on any mobile browsers <i>(not always the case on iOS)</i></p>
+<p>Flyout menus <b class="fail">not accessible</b> on any mobile browsers <i>(not always the case on iOS)</i></p>
 
-<div class="nav">
+<div class="nav fail">
 	<ul>
 		<li>
 			<a href="http://google.com" class="parent">Google</a>
@@ -174,7 +208,7 @@
 </div>
 
 <h2>Standard UL &raquo; LI &raquo; UL &raquo; LI pattern <i>(with Touch Menu Hover enabled)</i></h2>
-<p>Flyout menus accessible on all mobile browsers</p>
+<p>Flyout menus <b>accessible</b> on all mobile browsers</p>
 
 <pre>
 <code>
@@ -210,9 +244,9 @@ $('#tmh1').touchMenuHover({
 </div>
 
 <h2>Mega Menu UL &raquo; LI &raquo; DIV &raquo; UL &raquo; LI pattern</h2>
-<p>Flyout menus not accessible on any mobile browsers</p>
+<p>Flyout menus <b class="fail">not accessible</b> on any mobile browsers</p>
 
-<div class="nav">
+<div class="nav fail">
 	<ul>
 		<li>
 			<a href="http://google.com" class="parent">Google</a>
@@ -242,7 +276,7 @@ $('#tmh1').touchMenuHover({
 </div>
 
 <h2>Mega Menu UL &raquo; LI &raquo; DIV &raquo; UL &raquo; LI pattern <i>(with Touch Menu Hover enabled)</i></h2>
-<p>Flyout menus accessible on all mobile browsers</p>
+<p>Flyout menus <b>accessible</b> on all mobile browsers</p>
 
 <pre>
 <code>
